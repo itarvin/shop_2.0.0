@@ -11,7 +11,7 @@ use app\models\ContactForm;
 
 class MemberController extends Controller
 {
-    public $layout = false;
+    
     /**
      * Displays homepage.
      *
@@ -19,6 +19,7 @@ class MemberController extends Controller
      */
     public function actionAuth()
     {
+        $this ->layout = "layouts2";
         return $this->render('auth');
     }
 }

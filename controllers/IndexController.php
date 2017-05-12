@@ -19,7 +19,7 @@ class IndexController extends Controller
     public function actionIndex()
     {
       // echo '123456';
-        $this->layout=false;
+        $this->layout="layouts1";
         return $this->render('index');
     }
 }

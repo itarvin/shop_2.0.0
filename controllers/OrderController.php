@@ -11,7 +11,7 @@ use app\models\ContactForm;
 
 class OrderController extends Controller
 {
-    public $layout = false;
+    // public $layout = false;
     /**
      * Displays homepage.
      *
@@ -20,13 +20,13 @@ class OrderController extends Controller
     public function actionCheck()
     {
       // echo '123456';
-        // $this->layout=false;
+        $this->layout="layouts2";
         return $this->render('check');
     }
      public function actionIndex()
     {
       // echo '123456';
-        // $this->layout=false;
+        $this->layout="layouts2";
         return $this->render('index');
     }
 }

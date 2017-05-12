@@ -11,7 +11,6 @@ use app\models\ContactForm;
 
 class ProductController extends Controller
 {
-    public $layout = false;
     /**
      * Displays homepage.
      *
@@ -20,12 +19,12 @@ class ProductController extends Controller
     public function actionIndex()
     {
       // echo '123456';
-        // $this->layout=false;
+        $this->layout="layouts2";
         return $this->render('index');
     }
     public function actionDetail()
     {
-        // $this->layout=false;
+        $this->layout="layouts2";
         return $this -> render('detail');
     }
 }
