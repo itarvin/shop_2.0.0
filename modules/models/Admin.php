@@ -27,7 +27,7 @@ class Admin extends ActiveRecord
     {
     	return [
         	['adminuser', 'required','message'=>'管理员账号不能为空','on'=>['login','seekpass','changepass','adminadd','changeemail']],
-        	['adminpass','required','message'=>'密码不能为空','on' => ['login','adminadd','changeemail']],
+        	['adminpass','required','message'=>'密码不能为空','on' => ['login','adminadd','changeemail','changepass']],
         	['rememberMe','boolean','on' => ['login','adminadd']],
         	['adminpass','validatePass','on' => ['login','changeemail']],
             ['adminemail','required','message'=>'电子邮箱不能为空','on'=> ['seekpass','adminadd','changeemail']],
@@ -59,9 +59,8 @@ class Admin extends ActiveRecord
     }
     public function login($data)
     {
-    	// $this->scenario = "login";
-        if ($this->load($data) && $this->validate())
-    	{
+    	  $this->scenario = "login";
+        if ($this->load($data) && $this->validate()) {
             //做点有意义的事
             $lifetime = $this->rememberMe ? 24*3600 : 0;
             $session = Yii::$app->session;
@@ -70,14 +69,10 @@ class Admin extends ActiveRecord
                 'adminuser' => $this->adminuser,
                 'isLogin' => 1,
             ];
-            $this->updateAll([
-              'logintime' => time(), 
-              'loginip' => ip2long(Yii::$app->request->userIP)], 
-              'adminuser = :user', 
-              [':user' => $this->adminuser]);
+            $this->updateAll(['logintime' => time(), 'loginip' => ip2long(Yii::$app->request->userIP)], 'adminuser = :user', [':user' => $this->adminuser]);
             return (bool)$session['admin']['isLogin'];
-    	}
-    	return false;
+        }
+        return false;
     }
     public function seekPass($data)
     {
@@ -106,6 +101,15 @@ class Admin extends ActiveRecord
         if ($this ->load($data) && $this->validate())
         {
             return (bool)$this->updateAll(['adminemail' => $this ->adminemail],'adminuser =:user',[':user' => $this->adminuser]);
+        }
+        return false;
+    }
+    public function changePass($data)
+    {
+        $this ->scenario = "changepass";
+        if ($this->load($data) && $this->validate())
+        {
+            return (bool)$this->updateAll(['adminpass'=>md5(md5($this->adminpass))]);
         }
         return false;
     }

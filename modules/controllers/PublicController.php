@@ -16,13 +16,10 @@ class PublicController extends Controller
      */
     public function actionLogin()
     {
-        // session_start();
-        // var_dump($_SESSION);
         $this->layout = false;
         $model = new Admin;
         if(Yii::$app->request->isPost) {
             $post = Yii::$app->request->post();
-            // var_dump($post);die;
             if ($model->login($post)) {
                 $this->redirect(['default/index']);
                 Yii::$app->end();

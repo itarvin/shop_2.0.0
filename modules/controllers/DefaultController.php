@@ -16,6 +16,8 @@ class DefaultController extends Controller
     public function actionIndex()
     {
     	$this->layout="main";
+    	// session_start();
+    	// var_dump($_SESSION['admin']['adminuser']);die;
         return $this->render('index');
     }
 }

@@ -81,7 +81,24 @@ class ManageController extends CommonController
                 Yii::$app->session->setFlash('info', '修改成功');
             }
         }
-        // $model->adminpass = "";
+        $model->adminpass = "";
         return $this->render('changeemail', ['model' => $model]);
+    }
+    public function actionChangepass()
+    {
+        $this ->layout="main";
+        $model = Admin::find()->where('adminuser = :user', [':user' => Yii::$app ->session['admin']['adminuser']]) ->one();
+        if (Yii::$app->request->isPost)
+        {
+            $post =Yii::$app->request->post();
+            if ($model ->changepass($post))
+            {
+                Yii::$app->session->setFlash('info','密码修改成功！');
+            }
+        }
+        // var_dump($_SESSION['admin']['adminuser']);die;
+        $model->adminpass ='';
+        $model->repass =''; 
+        return $this->render('changepass',['model' => $model]);
     }
 }
