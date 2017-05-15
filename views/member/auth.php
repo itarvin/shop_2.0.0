@@ -12,10 +12,10 @@
 					<div class="social-auth-buttons">
 						<div class="row">
 							<div class="col-md-6">
-								<button class="btn-block btn-lg btn btn-facebook"><i class="fa fa-facebook"></i> Sign In with Facebook</button>
+								<button class="btn-block btn-lg btn btn-qq"><i class="fa fa-qq"></i> Sign In with QQ</button>
 							</div>
 							<div class="col-md-6">
-								<button class="btn-block btn-lg btn btn-twitter"><i class="fa fa-twitter"></i> Sign In with Twitter</button>
+								<button class="btn-block btn-lg btn btn-weibo"><i class="fa fa-weibo"></i> Sign In with weibo</button>
 							</div>
 						</div>
 					</div>
@@ -50,17 +50,17 @@
 
 			<div class="col-md-6">
 				<section class="section register inner-left-xs">
-					<h2 class="bordered">Create New Account</h2>
-					<p>Create your own Media Center account</p>
+					<h2 class="bordered">创建新的账户</h2>
+					<p>创建一个您专有的账户吧</p>
 
 					<form role="form" class="register-form cf-style-1">
 						<div class="field-row">
-                            <label>Email</label>
+                            <label>邮箱</label>
                             <input type="text" class="le-input">
                         </div><!-- /.field-row -->
 
                         <div class="buttons-holder">
-                            <button type="submit" class="le-button huge">Sign Up</button>
+                            <button type="submit" class="le-button huge">注册吧！</button>
                         </div><!-- /.buttons-holder -->
 					</form>
 

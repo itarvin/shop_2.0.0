@@ -1,15 +1,14 @@
-<?php 
+<?php
     use yii\bootstrap\ActiveForm;
     use yii\helpers\Html;
-    // use yii\helpers;
 ?>
 <!DOCTYPE html>
 <html class="login-bg">
 <head>
-	<title>商城 - 后台管理</title>
-    
+	<title>商城 - 更改密码</title>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
+
     <!-- bootstrap -->
     <link href="assets/admin/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="assets/admin/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
@@ -22,13 +21,21 @@
 
     <!-- libraries -->
     <link rel="stylesheet" type="text/css" href="assets/admin/css/lib/font-awesome.css" />
-    
+
     <!-- this page specific styles -->
     <link rel="stylesheet" href="assets/admin/css/compiled/signin.css" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
+
+
     <div class="row-fluid login-wrapper">
-        <a class="brand" href="index.html"></a>
+    <a class="brand" href="<?php echo yii\helpers\Url::to(['/index/index']) ?>"></a>
         <?php $form = ActiveForm::begin([
             'fieldConfig' => [
                 'template' => '{error}{input}',
@@ -37,14 +44,19 @@
         <div class="span4 box">
             <div class="content-wrap">
                 <h6>商城 - 修改密码</h6>
-                <?php echo $form->field($model,'adminuser')->hiddenInput();?>
-                <?php echo $form->field($model,'adminpass')->passwordInput(["class"=>"span12", "placeholder" => "新密码"]);?>
-                <?php echo $form->field($model,'repass')->passwordInput(["class"=>"span12", "placeholder" => "确认密码"]);?>
-                <a href="<?php echo yii\helpers\Url::to(['public/login']);?>" class="forgot">返回登录</a>
-                <?php echo Html::submitButton('确认修改', ["class" => "btn-glow primary login"]); ?>
+                <?php
+                    if (Yii::$app->session->hasFlash('info')) {
+                        echo Yii::$app->session->getFlash('info');
+                    }
+                ?>
+                <?php echo $form->field($model, 'adminuser')->hiddenInput(); ?>
+                <?php echo $form->field($model, 'adminpass')->passwordInput(["class" => "span12", "placeholder" => "新密码"]); ?>
+                <?php echo $form->field($model, 'repass')->passwordInput(["class" => "span12", "placeholder" => "确认密码"]); ?>
+                <a href="<?php echo yii\helpers\Url::to(['public/login']); ?>" class="forgot">返回登录</a>
+                <?php echo Html::submitButton('修改', ["class" => "btn-glow primary login"]); ?>
             </div>
         </div>
-        <?php ActiveForm::end();?>
+        <?php ActiveForm::end(); ?>
     </div>
 
 	<!-- scripts -->

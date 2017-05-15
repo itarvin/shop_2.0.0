@@ -177,6 +177,29 @@
             </li>
             <li>
                 <a class="dropdown-toggle" href="#">
+                    <i class="icon-group"></i>
+                    <span>用户管理</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="<?php echo yii\helpers\Url::to(['user/users']);?>">用户列表</a></li>
+                    <li><a href="<?php echo yii\helpers\Url::to(['user/reg']);?>">用户添加</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" href="#">
+                    <i class="icon-glass"></i>
+                    <span>分类管理</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="<?php echo yii\helpers\Url::to(['category/lst']);?>">分类列表</a></li>
+                    <li><a href="<?php echo yii\helpers\Url::to(['category/add']);?>">分类添加</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="dropdown-toggle" href="#">
                     <i class="icon-edit"></i>
                     <span>表单</span>
                     <i class="icon-chevron-down"></i>

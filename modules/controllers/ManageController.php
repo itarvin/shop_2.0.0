@@ -11,22 +11,28 @@ class ManageController extends CommonController
 {
     public function actionMailchangepass()
     {
+        $this->layout = false;
         $time = Yii::$app->request->get("timestamp");
         $adminuser = Yii::$app->request->get("adminuser");
-        $token = Yii::$app ->request->get("token");
+        $token = Yii::$app->request->get("token");
         $model = new Admin;
         $myToken = $model->createToken($adminuser, $time);
-        if ($token != $myToken)
-        {
-            $this ->redirect(['public/login']);
+        if ($token != $myToken) {
+            $this->redirect(['public/login']);
             Yii::$app->end();
         }
-        if (time()-$time >300) {
-            $this ->redirect(['public/login']);
+        if (time() - $time > 300) {
+            $this->redirect(['public/login']);
             Yii::$app->end();
         }
-        $model ->adminuser =$adminuser;
-        return $this ->render('mailchangpass',['model' => $model]);
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+            if ($model->changePass($post)) {
+                Yii::$app->session->setFlash('info', '密码修改成功');
+            }
+        }
+        $model->adminuser = $adminuser;
+        return $this->render("mailchangepass", ['model' => $model]);
     }
     public function actionManagers()
     {
@@ -53,7 +59,7 @@ class ManageController extends CommonController
                 Yii::$app->session->setFlash('info','数据添加失败！');
             }
         }
-        $model ->adminpass = '';
+        $model ->adminpass ='';
         $model ->repass = '';
         return $this->render('reg',['model' => $model]);
     }
@@ -87,7 +93,7 @@ class ManageController extends CommonController
     public function actionChangepass()
     {
         $this ->layout="main";
-        $model = Admin::find()->where('adminuser = :user', [':user' => Yii::$app ->session['admin']['adminuser']]) ->one();
+        $model = Admin::find()->where('adminuser = :user', [':user' => Yii::$app ->session['admin']['adminuser']])->one();
         if (Yii::$app->request->isPost)
         {
             $post =Yii::$app->request->post();

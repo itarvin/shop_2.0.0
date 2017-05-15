@@ -48,6 +48,7 @@ class Admin extends ActiveRecord
     		}
     	}
     }
+
     public function validateEmail()
     {
         if (!$this->hasErrors()) {
@@ -57,6 +58,7 @@ class Admin extends ActiveRecord
             }
         }
     }
+
     public function login($data)
     {
     	  $this->scenario = "login";
@@ -74,14 +76,27 @@ class Admin extends ActiveRecord
         }
         return false;
     }
+
     public function seekPass($data)
     {
         $this->scenario = "seekpass";
         if ($this->load($data) && $this->validate()) {
             //做点有意义的事
-            return (bool)$this->updateAll(['adminpass' => md5(md5($this->adminpass))], 'adminuser = :user', [':user' => $this->adminuser]);
+            $time = time();
+            $token = $this->createToken($data['Admin']['adminuser'], $time);
+            $mailer = Yii::$app->mailer->compose('seekpass', ['adminuser' => $data['Admin']['adminuser'], 'time' => $time, 'token' => $token]);
+            $mailer->setFrom("itarvin@163.com");
+            $mailer->setTo($data['Admin']['adminemail']);
+            $mailer->setSubject("商城演示-找回密码");
+            if ($mailer->send()) {
+                return true;
+            }
         }
         return false;
+    }
+    public function createToken($adminuser, $time)
+    {
+        return md5(md5($adminuser).base64_encode(Yii::$app->request->userIP).md5($time));
     }
     public function reg($data)
     {

@@ -6,11 +6,11 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' =>'index',
+    'defaultRoute' => 'index',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '520109',
+            'cookieValidationKey' => 'q6ga0ArPuP1iWsey2H6aoeWsP7G98FnL',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -27,7 +27,17 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            // 邮件发送组件配置
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.163.com',
+                'username' => 'itarvin@163.com',
+                'password' => 'dk520109',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
+
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -61,7 +71,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        // 'allowedIPs' => [],
+        'allowedIPs' => ['127.0.0.1'],
     ];
     $config['modules']['admin'] = [
         'class' => 'app\modules\admin',
