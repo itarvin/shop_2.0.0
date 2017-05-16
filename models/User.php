@@ -62,7 +62,7 @@ class User extends ActiveRecord
         $this->scenario = $scenario;
         if ($this->load($data) && $this->validate()) {
             $this->createtime = time();
-            $this->userpass = md5(md5($this->userpass));
+            $this->userpass = md5($this->userpass);
             if ($this->save(false)) {
                 return true;
             }
@@ -93,7 +93,7 @@ class User extends ActiveRecord
 
     public function regByMail($data)
     {
-        $data['User']['username'] = 'it_'.uniqid();
+        $data['User']['username'] = 'imooc_'.uniqid();
         $data['User']['userpass'] = uniqid();
         $this->scenario = 'regbymail';
         if ($this->load($data) && $this->validate()) {

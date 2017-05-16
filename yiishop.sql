@@ -63,3 +63,24 @@ create table shop_category
 	primary key(cateid),
 	key title(title)
 )engine = InnoDB default charset=utf8 comment '分类表';
+
+
+drop table if exists shop_product;
+create table shop_product
+(
+	productid bigint unsigned not null auto_increment comment '商品ID',
+	cateid bigint unsigned not null default '0' comment '分类ID',
+	title varchar(200) not null default '' comment '标题',
+	descr text comment '描述',
+	num bigint unsigned not null default '0' comment '数量',
+	price decimal(10,2) not null default '0.00' comment '价格',
+	cover varchar(200) not null default '' ,
+	pics text comment '图片',
+	issale enum('0','1') not null default '0' comment '是否上架',
+	saleprice decimal(10,2) not null default '0.00' comment '上架价格',
+	ishot enum('0','1') not null default '0' comment '是否热卖',
+	createtime int unsigned not null default '0' comment '创建时间',
+	primary key(productid),
+	key cateid(cateid),
+	key title(title)
+)engine = InnoDB default charset = utf8 comment '商品表';
