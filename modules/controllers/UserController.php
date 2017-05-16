@@ -14,8 +14,8 @@ class UserController extends CommonController
     {
         $model = User::find()->joinWith('profile');
         $count = $model->count();
-        //error :=> $pageSize = Yii::$app->params['pageSize']['user'];  太神奇！
-        $pageSize = Yii::$app->params['pageSize'];
+        //error :=> $pageSize = Yii::$app->params['pageSize']['user'];  太神奇！ => params.php
+        $pageSize = Yii::$app->params['pageSize']['user'];
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
         $users = $model->offset($pager->offset)->limit($pager->limit)->all();
         $this->layout = "main";
@@ -62,5 +62,4 @@ class UserController extends CommonController
       }
         $this->redirect(['user/users']);
     }
-
 }

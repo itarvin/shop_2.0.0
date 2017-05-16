@@ -1,104 +1,206 @@
-
-<!-- ============================================================= HEADER : END ============================================================= -->       <!-- ========================================= MAIN ========================================= -->
-<main id="contact-us" class="inner-bottom-md">
-    <section class="google-map map-holder">
-        <div id="map" class="map center"></div>
-        <form role="form" class="get-direction">
-            <div class="container">
-                <div class="row">
-                    <div class="center-block col-lg-10">
-                        <div class="input-group">
-                            <input type="text" class="le-input input-lg form-control" placeholder="Enter Your Starting Point">
-                            <span class="input-group-btn">
-                                <button class="btn btn-lg le-button" type="button">Get Directions</button>
-                            </span>
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                </div><!-- /.row -->
-            </div>
-        </form>
-    </section>
-
-    <div class="container">
-        <div class="row">
+<!-- ============================================================= HEADER : END ============================================================= -->		<div id="single-product">
+    <div class="container" style="padding-top:10px">
+<?php foreach($orders as $order): ?>
+<div style="margin-bottom:30px;">
+  <div class="trade-order-mainClose">
+    <div>
+      <table style="width:100%;border-collapse:collapse;border-spacing:0px;">
+        <colgroup>
+          <col style="width:38%;">
+          <col style="width:10%;">
+          <col style="width:5%;">
+          <col style="width:12%;">
+          <col style="width:12%;">
+          <col style="width:11%;">
+          <col style="width:12%;">
+        </colgroup>
+        <tbody>
+          <tr style="background-color:#F5F5F5;width:100%">
+            <td style="padding:10px 20px;text-align:left;width:100%">
+              <label>
+                <strong title="" style="margin-right:8px;font-weight:bold;">
+                    <?php echo date('Y-m-d H:i:s', $order->createtime); ?>
+                </strong>
+              </label>
+              <span>
+                订单号：
+              </span>
+              <span>
+              </span>
+              <span>
+                <?php echo $order->orderid ?>
+              </span>
+            </td>
             
-            <div class="col-md-8">
-                <section class="section leave-a-message">
-                    <h2 class="bordered">Leave a Message</h2>
-                    <p>Maecenas dolor elit, semper a sem sed, pulvinar molestie lacus. Aliquam dignissim, elit non mattis ultrices, neque odio ultricies tellus, eu porttitor nisl ipsum eu massa.</p>
-                    <form id="contact-form" class="contact-form cf-style-1 inner-top-xs" method="post" >
-                        <div class="row field-row">
-                            <div class="col-xs-12 col-sm-6">
-                                <label>Your Name*</label>
-                                <input class="le-input" >
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <label>Your Email*</label>
-                                <input class="le-input" >
-                            </div>
-                        </div><!-- /.field-row -->
-                        
-                        <div class="field-row">
-                            <label>Subject</label>
-                            <input type="text" class="le-input">
-                        </div><!-- /.field-row -->
+          </tr>
+        </tbody>
+      </table>
+      <table style="width:100%;border-collapse:collapse;border-spacing:0px;">
+        <colgroup>
+          <col style="width:38%;">
+          <col style="width:10%;">
+          <col style="width:5%;">
+          <col style="width:12%;">
+          <col style="width:12%;">
+          <col style="width:11%;">
+        </colgroup>
+        <tbody>
+          <?php $i = 1; ?>
+          <?php foreach($order->products as $product): ?>
+          <tr>
+            <td style="text-align:left;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:0;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;padding-left:20px;" >
+              <div style="overflow:hidden;">
+              <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['product/detail', 'productid' => $product->productid]) ?>" style="float:left;width:27%;margin-right:2%;text-align:center;" target="_blank">
+                <img src="<?php echo $product->cover ?>-picsmall" style="border:1px solid #E8E8E8;max-width:80px;">
+                </a>
+                <div style="float:left;width:71%;word-wrap:break-word;">
+                  <div style="margin:0px;">
+                  <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['product/detail', 'productid' => $product->productid]) ?>" target="_blank">
+                      <span>
+                        <?php echo $product->title ?>
+                      </span>
+                    </a>
+                    <span>
+                    </span>
+                  </div>
+                  <div style="margin-top:8px;margin-bottom:0;color:#9C9C9C;">
+                    <span style="margin-right:6px;">
+                      <span>
+                        分类
+                      </span>
+                      <span>
+                        ：
+                      </span>
+                      <span>
+                        <?php echo $product->cate ?>
+                      </span>
+                    </span>
+                  </div>
+                  
+                  <span>
+                  </span>
+                </div>
+              </div>
+            </td>
+            <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:0;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;">
+              <div style="font-family:verdana;font-style:normal;">
+                <p>
+                    <?php echo $product->price ?>
+                </p>
+                <span>
+                </span>
+                <span>
+                </span>
+              </div>
+            </td>
+            <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:0;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;">
+              <div>
+                <div>
+                数量 <?php echo $product->num ?>
+                </div>
+              </div>
+            </td>
+            <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" >
+              <div>
+                <div style="margin-bottom:3px;">
+                  <span>
+                    <span class="trade-ajax">
+                      <span class="trade-tooltip-wrap">
+                        <span>
+                          <span class="trade-operate-text">
+                            单位：个
+                          </span>
+                        </span>
+                      </span>
+                      <noscript>
+                      </noscript>
+                    </span>
+                  </span>
+                </div>
+                
+              </div>
+            </td>
+            <?php if ($i == 1): ?>
+            <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" >
+              <div>
+                <div style="font-family:verdana;font-style:normal;">
+                  <span>
+                  </span>
+                  <span>
+                  </span>
+                  <p>
+                    <strong>
+                        <?php echo $order->amount ?> 元
+                    </strong>
+                  </p>
+                  <span>
+                  </span>
+                </div>
+                <p>
+                  <span>
+                    (含运费：
+                  </span>
+                  <span>
+                    <?php echo empty(\Yii::$app->params['expressPrice'][$order->expressid]) ? '0' : \Yii::$app->params['expressPrice'][$order->expressid] ?> 元
+                  </span>
+                  <span>
+                  </span>
+                  <span>
+                  </span>
+                  <span>
+                    )
+                  </span>
+                </p>
+                
+                <div>
+                </div>
+              </div>
+            </td>
+            <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" >
+              <div>
+                <div style="margin-bottom:3px;">
+                <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['order/check', 'orderid' => $order->orderid]) ?>">
+                    <?php echo $order->zhstatus ?>
+                </a>
+                </div>
+                <?php if ($order->status == 220): ?>
+                <div>
+                  <div style="margin-bottom:3px;position:relative">
+                    <span>
+                        <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['order/received', 'orderid' => $order->orderid]) ?>" target="_blank">
+                        <span class="trade-operate-text">
+                          确认收货
+                        </span>
+                      <div class="expressshow" style="overflow:auto;text-align:left;font-size:12px;width:200px;height:300px;position:absolute;border:1px solid #ccc;padding:15px;background-color:#eee">快递状态</div>
+                      </a>
+                    </span>
+                    <span>
+                        <a data="<?php echo $order->expressno ?>" class="tp-tag-a express" href="#" target="_blank">
+                        <span class="trade-operate-text">
+                          查看物流
+                        </span>
+                      <div class="expressshow" style="overflow:auto;text-align:left;font-size:12px;width:200px;height:300px;position:absolute;border:1px solid #ccc;padding:15px;background-color:#eee">查询中...</div>
+                      </a>
+                    </span>
+                  </div>
+                <?php endif; ?>
+                <?php else: ?>
+                    <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" ></td>
+                    <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" ></td>
+                <?php endif; ?>
+                </div>
+              </div>
+            </td>
+         </tr>
+        <?php $i++; ?>
+        <?php endforeach; ?>
+       </tbody>
+      </table>
+      <div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach; ?>
+</div>
 
-                        <div class="field-row">
-                            <label>Your Message</label>
-                            <textarea rows="8" class="le-input"></textarea>
-                        </div><!-- /.field-row -->
-
-                        <div class="buttons-holder">
-                            <button type="submit" class="le-button huge">Send Message</button>
-                        </div><!-- /.buttons-holder -->
-                    </form><!-- /.contact-form -->
-                </section><!-- /.leave-a-message -->
-            </div><!-- /.col -->
-
-            <div class="col-md-4">
-                <section class="our-store section inner-left-xs">
-                    <h2 class="bordered">Our Store</h2>
-                    <address>
-                        17 Princess Road <br/>
-                        London, Greater London <br/>
-                        NW1 8JR, UK
-                    </address>
-                    <h3>Hours of Operation</h3>
-                    <ul class="list-unstyled operation-hours">
-                        <li class="clearfix">
-                            <span class="day">Monday:</span>
-                            <span class="pull-right hours">12-6 PM</span>
-                        </li>
-                        <li class="clearfix">
-                            <span class="day">Tuesday:</span>
-                            <span class="pull-right hours">12-6 PM</span>
-                        </li>
-                        <li class="clearfix">
-                            <span class="day">Wednesday:</span>
-                            <span class="pull-right hours">12-6 PM</span>
-                        </li>
-                        <li class="clearfix">
-                            <span class="day">Thursday:</span>
-                            <span class="pull-right hours">12-6 PM</span>
-                        </li>
-                        <li class="clearfix">
-                            <span class="day">Friday:</span>
-                            <span class="pull-right hours">12-6 PM</span>
-                        </li>
-                        <li class="clearfix">
-                            <span class="day">Saturday:</span>
-                            <span class="pull-right hours">12-6 PM</span>
-                        </li>
-                        <li class="clearfix">
-                            <span class="day">Sunday</span>
-                            <span class="pull-right hours">Closed</span>
-                        </li>
-                    </ul>
-                    <h3>Career</h3>
-                    <p>If you're interested in employment opportunities at MediaCenter, please email us: <a href="mailto:contact@yourstore.com">contact@yourstore.com</a></p>
-                </section><!-- /.our-store -->
-            </div><!-- /.col -->
-
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</main>

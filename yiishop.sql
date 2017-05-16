@@ -77,10 +77,30 @@ create table shop_product
 	cover varchar(200) not null default '' ,
 	pics text comment '图片',
 	issale enum('0','1') not null default '0' comment '是否上架',
+	istui enum('0','1') not null default '0' comment '是否推荐',
 	saleprice decimal(10,2) not null default '0.00' comment '上架价格',
 	ishot enum('0','1') not null default '0' comment '是否热卖',
+	ison enum('0','1') not null default '0' comment '是否上架',
 	createtime int unsigned not null default '0' comment '创建时间',
 	primary key(productid),
 	key cateid(cateid),
 	key title(title)
 )engine = InnoDB default charset = utf8 comment '商品表';
+
+ALTER TABLE shop_product ADD istui enum('0','1') not null default '0' comment '是否推荐';
+ALTER TABLE shop_product ADD ison enum('0','1') not null default '0' comment '是否上架';
+
+
+drop table if exists shop_cart;
+create table shop_cart
+(
+	cartid bigint unsigned not null auto_increment comment 'id',
+	productid bigint unsigned not null default '0' comment '商品ID',
+	productname int unsigned not null default '0' comment '商品名称',
+	price decimal(10,2) not null default '0.00' comment '价格',
+	userid bigint unsigned not null default '0' comment '用户ID',
+	createtime int unsigned not null default '0' comment '创建时间',
+	primary key(cartid),
+	key productid(productid),
+	key userid(userid)
+)engine = InnoDB default charset =utf8 comment '购物车';
