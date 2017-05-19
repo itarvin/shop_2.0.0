@@ -18,7 +18,7 @@
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "crazyfd/yii2-qiniu": "dev-master",
+        "crazyfd/yii2qiniu": "dev-master",
         "dzer/yii2-express": "^1.3"
     },
     "require-dev": {
@@ -52,10 +52,5 @@
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
         }
-    }
-    {
-      "require": {
-        "crazyfd/yii2-qiniu": "dev-master"
-      }
     }
 }

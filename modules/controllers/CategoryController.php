@@ -4,11 +4,11 @@ namespace app\modules\controllers;
 use app\models\Category;
 use yii\web\Controller;
 use Yii;
-
+use app\modules\controllers\CommonController;
 /**
- *Public controller for the `admin` module
+ *Category controller for the `admin` module
  */
-class CategoryController extends Controller
+class CategoryController extends CommonController
 {
     public function actionLst()
     {
@@ -58,7 +58,7 @@ class CategoryController extends Controller
                 throw new \Exception('删除分类数据失败！');
             }
         }catch(\Exception $e){
-            Yii::$app->sessio->setFlash('info','删除分类数据失败！');
+            Yii::$app->session->setFlash('info','删除分类数据失败！');
         }
         return $this ->redirect(['category/lst']);
     }

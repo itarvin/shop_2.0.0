@@ -16,7 +16,7 @@ create table shop_admin
 	key adminuser(adminuser),
 	key adminpass9(adminpass),
 	key adminemail(adminemail)
-)engine = InnoDB default charset=utf8 comment "商城管理员表";
+)engine = MyISAM default charset=utf8 comment "商城管理员表";
 
 
 insert into shop_admin (adminid,adminuser,adminpass,adminemail,createtime) values('1','itarvin','be140e0fb8126d278d0d823ddd4fab2a','itarvin@163.com',UNIX_TIMESTAMP());
@@ -33,7 +33,7 @@ create table shop_user
 	primary key(userid),
 	key username(username),
 	key useremail(useremail)
-)engine = InnoDB default charset= utf8 comment '会员表';
+)engine = MyISAM default charset= utf8 comment '会员表';
 
 
 drop table if exists shop_profile;
@@ -50,7 +50,7 @@ create table shop_profile
 	createtime int unsigned not null default '0' comment '创建时间',
 	primary key(id),
 	unique shop_profile_userid(userid)  
-)engine = InnoDB default charset = utf8 comment '会员详细信息';
+)engine = MyISAM default charset = utf8 comment '会员详细信息';
 
 
 drop table if exists shop_category;
@@ -62,7 +62,7 @@ create table shop_category
 	createtime int unsigned not null default '0' comment '创建时间',
 	primary key(cateid),
 	key title(title)
-)engine = InnoDB default charset=utf8 comment '分类表';
+)engine = MyISAM default charset=utf8 comment '分类表';
 
 
 drop table if exists shop_product;
@@ -85,10 +85,7 @@ create table shop_product
 	primary key(productid),
 	key cateid(cateid),
 	key title(title)
-)engine = InnoDB default charset = utf8 comment '商品表';
-
-ALTER TABLE shop_product ADD istui enum('0','1') not null default '0' comment '是否推荐';
-ALTER TABLE shop_product ADD ison enum('0','1') not null default '0' comment '是否上架';
+)engine = MyISAM default charset = utf8 comment '商品表';
 
 
 drop table if exists shop_cart;
@@ -103,4 +100,4 @@ create table shop_cart
 	primary key(cartid),
 	key productid(productid),
 	key userid(userid)
-)engine = InnoDB default charset =utf8 comment '购物车';
+)engine = MyISAM default charset =utf8 comment '购物车';

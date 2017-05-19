@@ -4,7 +4,6 @@ namespace app\modules\controllers;
 use app\modules\models\Admin;
 use yii\web\Controller;
 use Yii;
-
 /**
  *Public controller for the `admin` module
  */

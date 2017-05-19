@@ -4,7 +4,7 @@ use yii\db\ActiveRecord;
 
 class Product extends ActiveRecord
 {
-    const AK = 'DC-Juny2zxBxrrE8KC5FbMeS4zMxKEp_t9X9tM1';
+    const AK = '_DC-Juny2zxBxrrE8KC5FbMeS4zMxKEp_t9X9tM1';
     const SK = 'zXMqm2yGqih8X8VMW4zGBQD306NhJgaKhvwrNTCd';
     const DOMAIN = 'oq1htf1nc.bkt.clouddn.com';
     const BUCKET = 'itarvin';

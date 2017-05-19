@@ -7,15 +7,15 @@ use yii\web\Controller;
 use Yii;
 use yii\data\Pagination;
 use crazyfd\qiniu\Qiniu;
-
+use app\modules\controllers\CommonController;
 /**
  *Public controller for the `admin` module
  */
-class ProductController extends Controller
+class ProductController extends CommonController
 {
     public function actionAdd()
     {
-        $this->layout="main";
+        $this->layout='main';
         $model = new Product;
         $cate = new Category;
         $list = $cate->getOptions();
@@ -36,18 +36,19 @@ class ProductController extends Controller
             } else {
                 Yii::$app->session->setFlash('info', '添加失败');
             }
-
         }
-
         return $this->render("add", ['opts' => $list, 'model' => $model]);
     }
     public function actionList()
     {
         $model = Product::find();
+        // var_dump($model);
         $count = $model->count();
+        // var_dump($count);die;
         $pageSize = Yii::$app->params['pageSize']['product'];
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
         $products = $model->offset($pager->offset)->limit($pager->limit)->all();
+        // var_dump($products);die;
         $this->layout = "main";
         return $this->render("products", ['pager' => $pager, 'products' => $products]);
     }
@@ -56,17 +57,18 @@ class ProductController extends Controller
         if ($_FILES['Product']['error']['cover'] > 0) {
             return false;
         }
-        $qiniu = new Qiniu(Product::AK, Product::SK, Product::DOMAINm, Product::BUCKET);
+        $qiniu = new Qiniu(Product::AK, Product::SK, Product::DOMAIN, Product::BUCKET);
         $key = uniqid();
-        $qiniu ->uploadFile($_FILES['Product']['tmp_name']['cover'], $key);
+        // var_dump($qiniu);die;
+        $qiniu->uploadFile($_FILES['Product']['tmp_name']['cover'], $key);
         $cover = $qiniu->getLink($key);
         $pics = [];
         foreach ($_FILES['Product']['tmp_name']['pics'] as $k => $file) {
-            if ($_FILES['Product']['error']['pics'][$k] >0) {
+            if ($_FILES['Product']['error']['pics'][$k] > 0) {
                 continue;
             }
             $key = uniqid();
-            $qiniu ->uploadFile($file,$key);
+            $qiniu->uploadFile($file, $key);
             $pics[$key] = $qiniu->getLink($key);
         }
         return ['cover' => $cover, 'pics' => json_encode($pics)];
@@ -142,4 +144,25 @@ class ProductController extends Controller
         Product::updateAll(['ison' => '0'],'productid =:pid',[':pid' => $productid]);
         return $this->redirect(['product/list']);
     }
+
+    // public function actionCreate()
+    // {
+    // $model=new Product;
+    // if(isset($_POST['Product']))
+    // {
+    //     $model->attributes=$_POST['Product'];
+    //     if($model->save()){
+    //         // 上传图片函数
+
+    //         if($_FILES['imageFile']['name']!=null)
+    //         {
+    //             $model->setImageInformation($_FILES);
+    //         }
+    //         -->
+    //     } 
+    // } 
+    // $this->render('create',array(
+    //     'model'=>$model,
+    //     ));
+    // }
 }

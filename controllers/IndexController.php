@@ -2,24 +2,18 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\controllers\CommonController;
+use app\models\Product;
 
-class IndexController extends Controller
+class IndexController extends CommonController
 {
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
     public function actionIndex()
     {
-      // echo '123456';
         $this->layout="layouts1";
-        return $this->render('index');
+            $data['tui'] = Product::find()->where('istui = "1" and ison = "1"')->orderby('createtime desc')->limit(4)->all();
+        $data['new'] = Product::find()->where('ison = "1"')->orderby('createtime desc')->limit(4)->all();
+        $data['hot'] = Product::find()->where('ison = "1" and ishot = "1"')->orderby('createtime desc')->limit(4)->all();
+        $data['all'] = Product::find()->where('ison = "1"')->orderby('createtime desc')->limit(7)->all();
+        return $this->render("index", ['data' => $data]);
     }
 }
