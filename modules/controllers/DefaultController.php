@@ -15,6 +15,7 @@ class DefaultController extends CommonController
      */
     public function actionIndex()
     {
+        echo date('Y-m-d H:i:s');
     	$this->layout="main";
     	// session_start();
     	// var_dump($_SESSION['admin']['adminuser']);die;

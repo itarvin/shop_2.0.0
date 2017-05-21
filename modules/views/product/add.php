@@ -58,7 +58,7 @@
                                 <?php
                                     foreach((array)json_decode($model->pics, true) as $k=>$pic) {
                                 ?>
-                                    <img src="<?php echo $pic ?>-coversmall">
+                                    <img src="<?php echo $pic ?>-sbig_">
                                     <a href="<?php echo yii\helpers\Url::to(['product/removepic', 'key' => $k, 'productid' => $model->productid]) ?>">删除</a>
                                 <?php
                                 }

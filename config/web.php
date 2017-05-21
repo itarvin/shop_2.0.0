@@ -34,8 +34,11 @@ $config = [
                 'host' => 'smtp.163.com',
                 'username' => 'itarvin@163.com',
                 'password' => 'dk520109',
-                'port' => '465',
-                'encryption' => 'ssl',
+                'port' => '25',
+                'encryption' => 'ssl'
+                // 'messageConfig'=>[  
+                // 'charset'=>'UTF-8',  
+                // 'from'=>['itarvin@163.com'=>'admin']  
             ],
 
         ],

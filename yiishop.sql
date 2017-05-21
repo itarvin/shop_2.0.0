@@ -93,7 +93,7 @@ create table shop_cart
 (
 	cartid bigint unsigned not null auto_increment comment 'id',
 	productid bigint unsigned not null default '0' comment '商品ID',
-	productname int unsigned not null default '0' comment '商品名称',
+	productnum int unsigned not null default '0' comment '商品名称',
 	price decimal(10,2) not null default '0.00' comment '价格',
 	userid bigint unsigned not null default '0' comment '用户ID',
 	createtime int unsigned not null default '0' comment '创建时间',

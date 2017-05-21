@@ -93,7 +93,7 @@ class User extends ActiveRecord
 
     public function regByMail($data)
     {
-        $data['User']['username'] = 'imooc_'.uniqid();
+        $data['User']['username'] = 'it'.uniqid();
         $data['User']['userpass'] = uniqid();
         $this->scenario = 'regbymail';
         if ($this->load($data) && $this->validate()) {

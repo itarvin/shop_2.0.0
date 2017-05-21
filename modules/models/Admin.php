@@ -103,6 +103,7 @@ class Admin extends ActiveRecord
         $this->scenario = 'adminadd';
         if ($this->load($data) && $this->validate()) {
             $this->adminpass = md5(md5($this->adminpass));
+            $this->createtime = time();
             if ($this->save(false)) {
                 return true;
             }

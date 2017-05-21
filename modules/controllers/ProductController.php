@@ -110,14 +110,15 @@ class ProductController extends CommonController
     }
     public function actionRemovepic()
     {
-        $key = Yii::$app ->request->get("productid");
-        $model = Product::find()->where('product =:pid', [':pid' => $productid]);
+        $key = Yii::$app->request->get("key");
+        $productid = Yii::$app->request->get("productid");
+        $model = Product::find()->where('productid = :pid', [':pid' => $productid])->one();
         $qiniu = new Qiniu(Product::AK, Product::SK, Product::DOMAIN, Product::BUCKET);
         $qiniu->delete($key);
-        $pics = json_decode($model->pics,true);
+        $pics = json_decode($model->pics, true);
         unset($pics[$key]);
-        Product::updateAll(['pics' => json_encode($pics)],'productid =:pid',[':pid' => $productid]);
-        return $this->redirect(['product/mod','productid' => $productid]);
+        Product::updateAll(['pics' => json_encode($pics)], 'productid = :pid', [':pid' => $productid]);
+        return $this->redirect(['product/mod', 'productid' => $productid]);
     }
     public function actionDel() {
         $productid = Yii::$app->request->get("productid");
