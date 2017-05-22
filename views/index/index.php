@@ -126,7 +126,7 @@
                                 <?php endif; ?>
 
                                 <div class="image">
-                                <img alt="<?php echo $pro->title ?>" src="<?php echo $pro->cover ?>-sbig_" data-echo="<?php echo $pro->cover ?>-sbig_" />
+                                <img alt="<?php echo $pro->title ?>" src="http:\\<?php echo $pro->cover ?>-midimg" data-echo="<?php echo $pro->cover ?>-midimg" />
                                 </div>
                                 <div class="body">
                                     <div class="title">
@@ -167,7 +167,7 @@
                                 <?php endif; ?>
 
                                 <div class="image">
-                                <img alt="<?php echo $pro->title ?>" src="<?php echo $pro->cover ?>-sbig_" data-echo="<?php echo $pro->cover ?>-sbig_" />
+                                <img alt="<?php echo $pro->title ?>" src="http:\\<?php echo $pro->cover ?>-midimg" data-echo="<?php echo $pro->cover ?>-midimg" />
                                 </div>
                                 <div class="body">
                                     <div class="title">
@@ -209,7 +209,7 @@
                                 <?php endif; ?>
 
                                 <div class="image">
-                                <img alt="<?php echo $pro->title ?>" src="<?php echo $pro->cover ?>-sbig_" data-echo="<?php echo $pro->cover ?>-sbig_" />
+                                <img alt="<?php echo $pro->title ?>" src="http:\\<?php echo $pro->cover ?>-midimg" data-echo="<?php echo $pro->cover ?>-midimg" />
                                 </div>
                                 <div class="body">
                                     <div class="title">
@@ -256,7 +256,7 @@
                     <div class="col-xs-12 col-sm-4 no-margin product-item-holder size-medium hover">
                         <div class="product-item">
                             <div class="image">
-                            <img alt="<?php echo $data['all'][$i]->title ?>" src="<?php echo $data['all'][$i]->cover ?>-sbig_" data-echo="<?php echo $data['all'][$i]->cover ?>-sbig_" />
+                            <img alt="<?php echo $data['all'][$i]->title ?>" src="http:\\<?php echo $data['all'][$i]->cover ?>-midimg" data-echo="<?php echo $data['all'][$i]->cover ?>-midimg" />
                             </div>
                             <div class="body">
                                 <div class="label-discount clear"></div>
@@ -283,7 +283,7 @@
                     <div class="col-xs-12 col-sm-4 no-margin product-item-holder size-medium hover">
                         <div class="product-item">
                             <div class="image">
-                            <img alt="<?php echo $data['all'][$i]->title ?>" src="<?php echo $data['all'][$i]->cover ?>-sbig_" data-echo="<?php echo $data['all'][$i]->cover ?>-sbig_" />
+                            <img alt="<?php echo $data['all'][$i]->title ?>" src="http:\\<?php echo $data['all'][$i]->cover ?>-midimg" data-echo="<?php echo $data['all'][$i]->cover ?>-midimg" />
                             </div>
                             <div class="body">
                                 <div class="label-discount clear"></div>
@@ -310,13 +310,13 @@
                     <div id="best-seller-single-product-slider" class="single-product-slider owl-carousel">
                         <div class="single-product-gallery-item" id="slide1">
                         <a data-rel="prettyphoto" href="<?php echo $last->cover ?>">
-                        <img alt="<?php echo $last->title ?>" src="<?php echo $last->cover ?>-coverbig" data-echo="<?php echo $last->cover ?>-coverbig" />
+                        <img alt="<?php echo $last->title ?>" src="http:\\<?php echo $last->cover ?>-midimg" data-echo="<?php echo $last->cover ?>-midimg" />
                             </a>
                         </div><!-- /.single-product-gallery-item -->
                         <?php foreach((array)json_decode($last->pics, true) as $key => $pic): ?>
                         <div class="single-product-gallery-item" id="slide<?php echo $key+2; ?>">
                             <a data-rel="prettyphoto" href="<?php echo $last->pics ?>">
-                                <img alt="" src="<?php echo $pic ?>-picbig" data-echo="<?php echo $pic ?>-picbig" />
+                                <img alt="" src="http:\\<?php echo $pic ?>-picbig" data-echo="<?php echo $pic ?>-picbig" />
                             </a>
                         </div><!-- /.single-product-gallery-item -->
                         <?php endforeach; ?>
@@ -324,9 +324,9 @@
 
                     <div class="gallery-thumbs clearfix">
                         <ul>
-                        <li><a class="horizontal-thumb active" data-target="#best-seller-single-product-slider" data-slide="0" href="#slide1"><img alt="<?php echo $last->title ?>" src="<?php echo $last->cover ?>-picsmall" data-echo="<?php echo $last->cover ?>-picsmall" /></a></li>
+                        <li><a class="horizontal-thumb active" data-target="#best-seller-single-product-slider" data-slide="0" href="#slide1"><img alt="<?php echo $last->title ?>" src="http:\\<?php echo $last->cover ?>-midimg" data-echo="<?php echo $last->cover ?>-midimg" /></a></li>
                         <?php foreach ((array)json_decode($last->pics, true) as $key => $pic): ?>
-                            <li><a class="horizontal-thumb" data-target="#best-seller-single-product-slider" data-slide="<?php echo $key+1; ?>" href="#slide<?php echo $key+2; ?>"><img alt="" src="<?php echo $pic ?>-picsmall" data-echo="<?php echo $pic ?>-picsmall" /></a></li>
+                            <li><a class="horizontal-thumb" data-target="#best-seller-single-product-slider" data-slide="<?php echo $key+1; ?>" href="#slide<?php echo $key+2; ?>"><img alt="" src="http:\\<?php echo $pic ?>-midimg" data-echo="<?php echo $pic ?>-midimg" /></a></li>
                         <?php endforeach; ?>
                         </ul>
                     </div><!-- /.gallery-thumbs -->
@@ -373,7 +373,7 @@
                         <?php endif; ?>
 
 						<div class="image">
-                            <img alt="<?php echo $pro->title ?>" src="<?php echo $pro->cover ?>-sbig_" data-echo="<?php echo $pro->cover ?>-sbig_" />
+                            <img alt="<?php echo $pro->title ?>" src="http:\\<?php echo $pro->cover ?>-midimg" data-echo="<?php echo $pro->cover ?>-midimg" />
 						</div>
 						<div class="body">
 							<div class="title">

@@ -145,25 +145,4 @@ class ProductController extends CommonController
         Product::updateAll(['ison' => '0'],'productid =:pid',[':pid' => $productid]);
         return $this->redirect(['product/list']);
     }
-
-    // public function actionCreate()
-    // {
-    // $model=new Product;
-    // if(isset($_POST['Product']))
-    // {
-    //     $model->attributes=$_POST['Product'];
-    //     if($model->save()){
-    //         // 上传图片函数
-
-    //         if($_FILES['imageFile']['name']!=null)
-    //         {
-    //             $model->setImageInformation($_FILES);
-    //         }
-    //         -->
-    //     } 
-    // } 
-    // $this->render('create',array(
-    //     'model'=>$model,
-    //     ));
-    // }
 }

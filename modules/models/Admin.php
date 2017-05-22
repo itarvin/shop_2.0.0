@@ -61,7 +61,7 @@ class Admin extends ActiveRecord
 
     public function login($data)
     {
-    	  $this->scenario = "login";
+    	$this->scenario = "login";
         if ($this->load($data) && $this->validate()) {
             //做点有意义的事
             $lifetime = $this->rememberMe ? 24*3600 : 0;

@@ -54,7 +54,7 @@
                         <?php foreach($products as $product): ?>
                         <tr class="first">
                             <td>
-                                <img src="<?php echo $product->cover; ?>-smimg" class="img-circle avatar hidden-phone" />
+                                <img height="55" width="55" src="http://<?php echo $product->cover; ?>-smimg" class="img-circle avatar hidden-phone" />
                                 <a href="<?php echo yii\helpers\Url::to(['product/detail','productid' => $product->productid]) ;?>" class="name"><?php echo $product->title; ?></a>
                             </td>
                             <td>
