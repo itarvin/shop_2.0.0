@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'adminEmail' => 'itarvin@163.com',
+    'adminEmail' => 'itdkia@163.com',
     'pageSize' => [
     	'manage' => 10,
         'user'   => 10,

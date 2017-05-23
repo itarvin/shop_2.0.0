@@ -77,25 +77,32 @@ class Admin extends ActiveRecord
         return false;
     }
 
-    public function seekPass($data)
+      public function seekPass($data)
     {
+      //设置场景
         $this->scenario = "seekpass";
+        //加载数据和验证数据
         if ($this->load($data) && $this->validate()) {
-            //做点有意义的事
+            //做点有意义的事 and 获取当前时间
             $time = time();
+            //调用函数创建token值
             $token = $this->createToken($data['Admin']['adminuser'], $time);
+            //发送邮件验证
             $mailer = Yii::$app->mailer->compose('seekpass', ['adminuser' => $data['Admin']['adminuser'], 'time' => $time, 'token' => $token]);
-            $mailer->setFrom("itarvin@163.com");
-            $mailer->setTo($data['Admin']['adminemail']);
-            $mailer->setSubject("商城演示-找回密码");
+            $mailer->setFrom("itarvin@163.com"); //发送地址
+            $mailer->setTo($data['Admin']['adminemail']); //发送的地址
+            $mailer->setSubject("商城-找回密码"); //发送邮件函数标题
             if ($mailer->send()) {
                 return true;
             }
         }
         return false;
+
     }
+
     public function createToken($adminuser, $time)
     {
+      //两次md5加密用户名.编码用户的ip.md5加密获取的时间
         return md5(md5($adminuser).base64_encode(Yii::$app->request->userIP).md5($time));
     }
     public function reg($data)

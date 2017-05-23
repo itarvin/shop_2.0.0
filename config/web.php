@@ -32,13 +32,10 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.163.com',
-                'username' => 'itarvin@163.com',
-                'password' => 'dk520109',
-                'port' => '25',
-                'encryption' => 'ssl'
-                // 'messageConfig'=>[  
-                // 'charset'=>'UTF-8',  
-                // 'from'=>['itarvin@163.com'=>'admin']  
+                'username' => 'itdkia@163.com',
+                'password' => 'itarvin520',
+                'port' => '465',
+                'encryption' => 'ssl',
             ],
 
         ],
