@@ -4,12 +4,12 @@
 <!-- ============================================================= HEADER : END ============================================================= -->		<section id="cart-page">
     <div class="container">
         <!-- ========================================= CONTENT ========================================= -->
-        <?php $form = ActiveForm::begin([
-            'action' => yii\helpers\Url::to(['order/add']),
-        ]) ?>
+    <?php $form = ActiveForm::begin([
+        'action' => yii\helpers\Url::to(['order/add']),
+    ]) ?>
         <div class="col-xs-12 col-md-9 items-holder no-margin">
-<?php $total = 0; ?>
-<?php foreach((array)$data as $k=>$product): ?>
+        <?php $total = 0; ?>
+        <?php foreach((array)$data as $k=>$product): ?>
             <input type="hidden" name="OrderDetail[<?php echo $k?>][productid]" value="<?php echo $product['productid'] ?>">
             <input type="hidden" name="OrderDetail[<?php echo $k?>][price]" value="<?php echo $product['price'] ?>">
             <input type="hidden" name="OrderDetail[<?php echo $k?>][productnum]" value="<?php echo $product['productnum'] ?>">
@@ -24,7 +24,7 @@
                     <div class="title">
                     <a href="<?php echo yii\helpers\Url::to(['product/detail', 'productid' => $product['productid']]) ?>"><?php echo $product['title'] ?></a>
                     </div>
-                </div> 
+                </div>
 
                 <div class="col-xs-12 col-sm-3 no-margin">
                     <div class="quantity">
@@ -34,7 +34,7 @@
                                 <a class="plus" href="#add"></a>
                         </div>
                     </div>
-                </div> 
+                </div>
 
                 <div class="col-xs-12 col-sm-2 no-margin">
                     <div class="price">
@@ -43,8 +43,8 @@
                     <a class="close-btn" href="<?php echo yii\helpers\Url::to(['cart/del', 'cartid' => $product['cartid']]) ?>"></a>
                 </div>
             </div><!-- /.cart-item -->
-<?php $total += $product['price']*$product['productnum']; ?>
-<?php endforeach; ?>
+        <?php $total += $product['price']*$product['productnum']; ?>
+        
        </div>
         <!-- ========================================= CONTENT : END ========================================= -->
 
@@ -85,6 +85,7 @@
                 </div>
             </div><!-- /.widget -->
         </div><!-- /.sidebar -->
+        <?php endforeach; ?>
 
         <!-- ========================================= SIDEBAR : END ========================================= -->
     </div>

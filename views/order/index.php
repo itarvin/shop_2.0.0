@@ -31,7 +31,7 @@
                 <?php echo $order->orderid ?>
               </span>
             </td>
-            
+
           </tr>
         </tbody>
       </table>
@@ -76,7 +76,7 @@
                       </span>
                     </span>
                   </div>
-                  
+
                   <span>
                   </span>
                 </div>
@@ -117,7 +117,7 @@
                     </span>
                   </span>
                 </div>
-                
+
               </div>
             </td>
             <?php if ($i == 1): ?>
@@ -151,7 +151,7 @@
                     )
                   </span>
                 </p>
-                
+
                 <div>
                 </div>
               </div>
@@ -203,4 +203,3 @@
 </div>
 <?php endforeach; ?>
 </div>
-

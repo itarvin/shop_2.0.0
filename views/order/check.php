@@ -19,11 +19,11 @@
                     </div><!-- /.field-row -->
                     <?php endforeach; ?>
             </section><!-- /#shipping-address -->
-            
+
             <div class="billing-address" style="display:none;">
                 <h2 class="border h1">新建联系人</h2>
                 <?php ActiveForm::begin([
-                    'action' => ['address/add'],    
+                    'action' => ['address/add'],
                 ]); ?>
                     <div class="row field-row">
                         <div class="col-xs-12 col-sm-6">
@@ -146,20 +146,20 @@
             </div><!-- /#total-area -->
 
             <div id="payment-method-options">
-                    
+
                     <div class="payment-method-option">
                         <input class="le-radio" type="radio" name="paymethod" value="alipay" checked>
                         <div class="radio-label bold ">支付宝支付</div>
                     </div><!-- /.payment-method-option -->
-                    
+
             </div><!-- /#payment-method-options -->
-            
+
             <div class="place-order-button">
                 <button class="le-button big">确认订单</button>
             </div><!-- /.place-order-button -->
 
         </div><!-- /.col -->
-    </div><!-- /.container -->    
+    </div><!-- /.container -->
 </section><!-- /#checkout-page -->
 <!-- ========================================= CONTENT : END ========================================= -->		<!-- ============================================================= FOOTER ============================================================= -->
 <input type="hidden" value="<?php echo (int)\Yii::$app->request->get("orderid"); ?>" name="orderid">

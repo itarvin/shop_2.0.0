@@ -1,6 +1,8 @@
 create database yiishop;
 use yiishop;
-set names gbk;
+set names utf8; 
+
+-- 备注 引擎由innodb改MyISAM,使用innodb直接把引擎改为innodb直接使用即可
 
 drop table if exists shop_admin;
 create table shop_admin
@@ -101,3 +103,55 @@ create table shop_cart
 	key productid(productid),
 	key userid(userid)
 )engine = MyISAM default charset =utf8 comment '购物车';
+
+
+drop table if exists shop_order;
+create table shop_order
+(
+	orderid bigint unsigned not null auto_increment,
+	userid bigint unsigned not null default '0',
+	addressid int unsigned not null default '0' ,
+	amount decimal(10,2) not null default '0.00',
+	status int unsigned not null default '0' ,
+	expressid int unsigned not null default '0', 
+	expressno varchar(50) not null default '',
+	createtime int unsigned not null default '0', 
+	updetetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	primary key(orderid),
+	key userid(userid),
+	key addressid(addressid),
+	key expressid(expressid)
+)engine = MyISAM default charset =utf8;
+
+
+drop table if exists shop_order_detail;
+create table shop_order_detail
+(
+	detailid bigint unsigned not null auto_increment,
+	productid bigint unsigned not null default '0' ,
+	price decimal(10,2) not null default '0.00',
+	productnum int unsigned not null default '0',
+	orderid bigint unsigned not null default '0' ,
+	createtime int unsigned not null default '0',
+	primary key(detailid),
+	key productid(productid),
+	key orderid(orderid)
+)engine=MyISAM default charset = utf8;
+
+
+drop table if exists shop_address;
+create table shop_address
+(
+	addressid bigint unsigned auto_increment,
+	firstname varchar(32) not null default '',
+	lastname varchar(32) not null default '',
+	company varchar(100) not null default '',
+	address text,
+	postcode char(6) not null default '0',
+	email varchar(100) not null default '0',
+	telephone varchar(20)  not null default '0',
+	userid BIGINT UNSIGNED NOT NULL DEFAULT '0',
+	createtime int unsigned not null default '0',
+	primary key(addressid),
+	KEY userid(userid)
+)engine=MyISAM default charset = utf8;
