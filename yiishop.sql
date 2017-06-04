@@ -115,6 +115,8 @@ create table shop_order
 	status int unsigned not null default '0' ,
 	expressid int unsigned not null default '0', 
 	expressno varchar(50) not null default '',
+	tradeno varchar(100) not null default '' ,
+	tradeext text,
 	createtime int unsigned not null default '0', 
 	updetetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	primary key(orderid),
@@ -123,6 +125,8 @@ create table shop_order
 	key expressid(expressid)
 )engine = MyISAM default charset =utf8;
 
+alter table shop_order add tradeno varchar(100) not null default '' ;
+alter table shop_order add tradeext text;
 
 drop table if exists shop_order_detail;
 create table shop_order_detail

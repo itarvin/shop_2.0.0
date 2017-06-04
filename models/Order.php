@@ -51,7 +51,27 @@ class Order extends ActiveRecord
             'expressno' => '快递单号',
         ];
     }
-
+    public static function getProducts($userid)
+    {
+        $orders = self::find()->where('status > 0 and userid = :uid', [':uid' => $userid])->orderBy('createtime desc')->all();
+        foreach($orders as $order) {
+            $details = OrderDetail::find()->where('orderid = :oid', [':oid' => $order->orderid])->all();
+            $products = [];
+            foreach($details as $detail) {
+                $product = Product::find()->where('productid = :pid', [':pid' => $detail->productid])->one();
+                if (empty($product)) {
+                    continue;
+                }
+                $product->num = $detail->productnum;
+                $product->price = $detail->price;
+                $product->cate = Category::find()->where('cateid = :cid', [':cid' => $product->cateid])->one()->title;
+                $products[] = $product;
+            }
+            $order->zhstatus = self::$status[$order->status];
+            $order->products = $products;
+        }
+        return $orders;
+    }
     public function getDetail($orders)
     {
         foreach($orders as $order){
@@ -86,28 +106,4 @@ class Order extends ActiveRecord
         $order->zhstatus = self::$status[$order->status];
         return $order;
     }
-
-    public static function getProducts($userid)
-    {
-        $orders = self::find()->where('status > 0 and userid = :uid', [':uid' => $userid])->orderBy('createtime desc')->all();
-        foreach($orders as $order) {
-            $details = OrderDetail::find()->where('orderid = :oid', [':oid' => $order->orderid])->all();
-            $products = [];
-            foreach($details as $detail) {
-                $product = Product::find()->where('productid = :pid', [':pid' => $detail->productid])->one();
-                if (empty($product)) {
-                    continue;
-                }
-                $product->num = $detail->productnum;
-                $product->price = $detail->price;
-                $product->cate = Category::find()->where('cateid = :cid', [':cid' => $product->cateid])->one()->title;
-                $products[] = $product;
-            }
-            $order->zhstatus = self::$status[$order->status];
-            $order->products = $products;
-        }
-        return $orders;
-    }
-
-
 }

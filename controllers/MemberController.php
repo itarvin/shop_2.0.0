@@ -9,7 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\User;
-
+use app\controllers\CommonController;
 class MemberController extends CommonController
 {
     

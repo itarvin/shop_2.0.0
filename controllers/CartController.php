@@ -11,6 +11,7 @@ use app\models\ContactForm;
 use app\models\Product;
 use app\models\User;
 use app\models\Cart;
+use app\controllers\CommonController;
 class CartController extends CommonController
 {
     public function actionIndex()

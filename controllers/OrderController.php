@@ -165,6 +165,7 @@ class OrderController extends CommonController
                 throw new \Exception();
             }
             $orderid = Yii::$app->request->get('orderid');
+            // var_dump($orderid);die;
             $paymethod = Yii::$app->request->get('paymethod');
             if (empty($orderid) || empty($paymethod)) {
                 throw new \Exception();
