@@ -19,6 +19,7 @@ class PublicController extends Controller
         $model = new Admin;
         if(Yii::$app->request->isPost) {
             $post = Yii::$app->request->post();
+            // 拿到模型里做登录数据验证
             if ($model->login($post)) {
                 $this->redirect(['default/index']);
                 Yii::$app->end();

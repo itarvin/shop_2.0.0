@@ -17,6 +17,7 @@ class ProductController extends CommonController
     {
         $this->layout='main';
         $model = new Product;
+        var_dump($model);die;
         $cate = new Category;
         $list = $cate->getOptions();
         // var_dump($list);die;

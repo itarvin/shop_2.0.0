@@ -159,3 +159,21 @@ create table shop_address
 	primary key(addressid),
 	KEY userid(userid)
 )engine=MyISAM default charset = utf8;
+
+
+
+drop table if exists shop_back;
+create table shop_back
+(
+	id bigint unsigned auto_increment,
+	xuehao varchar(32) not null default '',
+	name varchar(32) not null default '',
+	back varchar(32) not null default '',
+	sfid varchar(18) not null default '',
+	-- class text,
+	numbers varchar(100) not null default '0',
+	ip varchar(100) not null default '0',
+	primary key(id),
+)engine=MyISAM default charset = utf8;
+
+

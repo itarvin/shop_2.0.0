@@ -58,19 +58,26 @@ class Admin extends ActiveRecord
             }
         }
     }
-
+// 数据验证
     public function login($data)
     {
+      // 场景为登录
     	$this->scenario = "login";
+      // 加载数据和验证数据
         if ($this->load($data) && $this->validate()) {
             //做点有意义的事
+            // 如果存在就存1天时间，否就不存cookie
             $lifetime = $this->rememberMe ? 24*3600 : 0;
+            // 打开session
             $session = Yii::$app->session;
+            // 迁移数据至cookie
             session_set_cookie_params($lifetime);
+            // 存储登录session
             $session['admin'] = [
                 'adminuser' => $this->adminuser,
                 'isLogin' => 1,
             ];
+            // 更新数据表信息
             $this->updateAll(['logintime' => time(), 'loginip' => ip2long(Yii::$app->request->userIP)], 'adminuser = :user', [':user' => $this->adminuser]);
             return (bool)$session['admin']['isLogin'];
         }
@@ -89,7 +96,7 @@ class Admin extends ActiveRecord
             $token = $this->createToken($data['Admin']['adminuser'], $time);
             //发送邮件验证
             $mailer = Yii::$app->mailer->compose('seekpass', ['adminuser' => $data['Admin']['adminuser'], 'time' => $time, 'token' => $token]);
-            $mailer->setFrom("itarvin@163.com"); //发送地址
+            $mailer->setFrom("itdkia@163.com"); //发送地址
             $mailer->setTo($data['Admin']['adminemail']); //发送的地址
             $mailer->setSubject("商城-找回密码"); //发送邮件函数标题
             if ($mailer->send()) {

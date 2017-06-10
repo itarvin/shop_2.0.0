@@ -1,4 +1,4 @@
-<?php 
+<?php
     use yii\bootstrap\ActiveForm;
     use yii\helpers\Html;
     // use yii\helpers;
@@ -7,9 +7,9 @@
 <html class="login-bg">
 <head>
 	<title>商城 - 后台管理</title>
-    
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
+
     <!-- bootstrap -->
     <link href="assets/admin/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="assets/admin/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
 
     <!-- libraries -->
     <link rel="stylesheet" type="text/css" href="assets/admin/css/lib/font-awesome.css" />
-    
+
     <!-- this page specific styles -->
     <link rel="stylesheet" href="assets/admin/css/compiled/signin.css" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
@@ -30,6 +30,7 @@
     <div class="row-fluid login-wrapper">
         <a class="brand" href="index.html"></a>
         <?php $form = ActiveForm::begin([
+          // 字段设置
             'fieldConfig' => [
                 'template' => '{error}{input}',
             ],
@@ -40,6 +41,7 @@
                 <?php echo $form->field($model,'adminuser')->textInput(["class"=>"span12", "placeholder" => "管理员账号"]);?>
                 <?php echo $form->field($model,'adminpass')->passwordInput(["class"=>"span12", "placeholder" => "管理员密码"]);?>
                 <a href="<?php echo yii\helpers\Url::to(['public/seekpassword']);?>" class="forgot">忘记密码?</a>
+              <!-- rememberMe决定是否把session存储到cookie -->
                 <?php echo $form ->field($model,"rememberMe")->checkbox([
                     'id' => 'remember-me',
                     'template' => '<div class="remember">{input}<label for="remember-me">记住我</label></div>',

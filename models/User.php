@@ -34,18 +34,22 @@ class User extends ActiveRecord
 
     public function validatePass()
     {
+      // 实行登录验证
         if (!$this->hasErrors()) {
+          // 使用用户名或邮箱登录
             $loginname = "username";
             if (preg_match('/@/', $this->loginname)) {
                 $loginname = "useremail";
             }
+            // 获取根据用户名【邮箱】查找出来的数据
             $data = self::find()->where($loginname.' = :loginname and userpass = :pass', [':loginname' => $this->loginname, ':pass' => md5($this->userpass)])->one();
+            // 如果数据为空，则提示错误！
             if (is_null($data)) {
                 $this->addError("userpass", "用户名或者密码错误");
             }
         }
     }
-
+    // 定义前台数据字段名属性值
     public function attributeLabels()
     {
         return [

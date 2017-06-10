@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div id="pad-wrapper" class="new-user">
                 <div class="row-fluid header">
-                    <h3>添加商品</h3>
+                    <h3>添加银行卡信息</h3>
                 </div>
                 <div class="row-fluid form-wrapper">
                     <!-- left column -->
@@ -38,35 +38,13 @@
                                         'enctype' => 'multipart/form-data'
                                     ],
                                 ]);
-                                echo $form->field($model, 'cateid')->dropDownList($opts, ['id' => 'cates']);
-                                echo $form->field($model, 'title')->textInput(['class' => 'span9']);
-                                echo $form->field($model, 'descr')->textarea(['id' => "wysi", 'class' => "span9 wysihtml5", 'style' => 'margin-left:120px']);
-                                echo $form->field($model, 'price')->textInput(['class' => 'span9']);
-                                echo $form->field($model, 'ishot')->radioList([0 => '不热卖', 1 => '热卖'], ['class' => 'span8']);
-                                echo $form->field($model, 'issale')->radioList(['不促销', '促销'], ['class' => 'span8']);
-                                echo $form->field($model, 'saleprice')->textInput(['class' => 'span9']);
-                                echo $form->field($model, 'num')->textInput(['class' => 'span9']);
-                                echo $form->field($model, 'ison')->radioList(['下架', '上架'], ['class' => 'span8']);
-                                echo $form->field($model, 'istui')->radioList(['不推荐', '推荐'], ['class' => 'span8']);
-                                echo $form->field($model, 'cover')->fileInput(['class' => 'span9']);
-                                if (!empty($model->cover)):
+                                echo $form->field($model, 'xuehao')->textInput(['class' => 'span9']);
+                                echo $form->field($model, 'name')->textInput(['class' => 'span9']);
+                                echo $form->field($model, 'back')->textInput(['class' => 'span9']);
+                                echo $form->field($model, 'sfid')->textInput(['class' => 'span9']);
+                                echo $form->field($model, 'number')->textInput(['class' => 'span9']);
                                 ?>
-                                    <img src="http://<?php echo $model->cover;?>-midimg">
                                     <hr>
-                                <?php
-                                    endif;
-                                    echo $form->field($model, 'pics[]')->fileInput(['class' => 'span9', 'multiple' => true,]);
-                                ?>
-                                <?php
-                                    foreach((array)json_decode($model->pics, true) as $k=>$pic) {
-                                ?>
-                                    <img src="http://<?php echo $pic ?>-midimg">
-                                    <a href="<?php echo yii\helpers\Url::to(['product/removepic', 'key' => $k, 'productid' => $model->productid]) ?>">删除</a>
-                                <?php
-                                }
-                                ?>
-                                <hr>
-                                <input type='button' id="addpic" value='增加一个'>
                                 <div class="span11 field-box actions">
                                     <?php echo Html::submitButton('提交', ['class' => 'btn-glow primary']); ?>
                                     <span>OR</span>

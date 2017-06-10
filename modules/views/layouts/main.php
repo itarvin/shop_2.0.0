@@ -208,6 +208,17 @@
                 <li><a href="<?php echo yii\helpers\Url::to(['product/add']); ?>">添加商品</a></li>
                 </ul>
             </li>
+            <li>
+                <a class="dropdown-toggle" href="#">
+                    <i class="icon-glass"></i>
+                    <span>银行卡管理</span>
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                <li><a href="<?php echo yii\helpers\Url::to(['back/list']); ?>">信息列表</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['back/add']); ?>">添加银行卡信息</a></li>
+                </ul>
+            </li>
              <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-edit"></i>

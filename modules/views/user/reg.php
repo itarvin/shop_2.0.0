@@ -1,11 +1,12 @@
-<?php 
+<?php
+// 引入核心
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 ?>
 <link rel="stylesheet" type="text/css" href="assets/admin/css/compiled/new-user.css">
 	<!-- main container -->
     <div class="content">
-        
+
         <div class="container-fluid">
             <div id="pad-wrapper" class="new-user">
                 <div class="row-fluid header">
@@ -16,22 +17,25 @@ use yii\helpers\Html;
                     <!-- left column -->
                     <div class="span9 with-sidebar">
                         <div class="container">
-<?php 
+<?php
+// 判session中是否存在错误信息，存在就输出错误
     if (Yii::$app->session->hasFlash('info')) {
         echo Yii::$app->session->getFlash('info');
     }
+    // 重构定义表单
     $form = ActiveForm::begin([
         'options' => ['class' => 'new_user_form inline-input'],
         'fieldConfig' => ['template' => '<div class="span12 field-box">{label}{input}{error}</div>'],
     ]);
 ?>
+<!-- 引用User模型中定义的字段属性 -->
                          <?php echo $form->field($model,'username')->textInput(['class'=> 'span9']); ?>
-                         <?php echo $form->field($model,'useremail')->textInput(['class'=> 'span9']); ?>       
-                         <?php echo $form->field($model,'userpass')->passwordInput(['class'=> 'span9']); ?> 
-                         <?php echo $form->field($model,'repass')->passwordInput(['class'=> 'span9']); ?>        
+                         <?php echo $form->field($model,'useremail')->textInput(['class'=> 'span9']); ?>
+                         <?php echo $form->field($model,'userpass')->passwordInput(['class'=> 'span9']); ?>
+                         <?php echo $form->field($model,'repass')->passwordInput(['class'=> 'span9']); ?>
                                 <div class="span11 field-box actions">
                                 <?php echo Html::submitButton('创建',['class' =>'btn-glow primary']);?>
-                                
+
                                     <span>OR</span>
                                     <?php echo Html::submitButton('取消',['class' =>'reset']);?>
                                 </div>
@@ -48,7 +52,7 @@ use yii\helpers\Html;
                         <div class="alert alert-info hidden-tablet">
                             <i class="icon-lightbulb pull-left"></i>
                             Click above to see difference between inline and normal inputs on a form
-                        </div>                        
+                        </div>
                         <h6>Sidebar text for instructions</h6>
                         <p>Add multiple users at once</p>
                         <p>Choose one of the following file types:</p>

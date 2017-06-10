@@ -16,11 +16,17 @@ class OrderController extends CommonController
     public function actionList()
     {
         $this->layout = "layout1";
+        //获取Order表的模型
         $model = Order::find();
+        // 获取模型中所有行数
         $count = $model->count();
+        // 定义order的取出每页行数
         $pageSize = Yii::$app->params['pageSize']['order'];
+        // 定出多少页
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
+        // 限定每页数据偏移
         $data = $model->offset($pager->offset)->limit($pager->limit)->all();
+        // 
         $data = Order::getDetail($data);
         return $this->render('list', ['pager' => $pager, 'orders' => $data]);
     }

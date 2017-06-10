@@ -79,6 +79,7 @@
                     </table>
                 </div>
                 <div class="pagination pull-right">
+                  <!-- 分页数据显示 -->
                     <?php echo yii\widgets\LinkPager::widget([
                         'pagination' => $pager,
                         'prevPageLabel' => '&#8249;',
